@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人简历 | iOS风格</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f7;
+            color: #1d1d1f;
+            line-height: 1.5;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px 30px;
+            background: linear-gradient(135deg, #007AFF 0%, #5856D6 100%);
+            border-radius: 24px;
+            margin-bottom: 30px;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 122, 255, 0.15);
+        }
+        
+        .avatar-container {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            overflow: hidden;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .avatar {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+        
+        .title {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+        }
+        
+        .contact-item i {
+            font-size: 1.2rem;
+        }
+        
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1d1d1f;
+        }
+        
+        .basic-info {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-radius: 12px;
+            background-color: #f8f8fa;
+            transition: background-color 0.2s;
+        }
+        
+        .info-item:hover {
+            background-color: #f0f0f5;
+        }
+        
+        .info-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .info-text {
+            flex: 1;
+        }
+        
+        .info-label {
+            font-size: 0.9rem;
+            color: #86868b;
+            margin-bottom: 3px;
+        }
+        
+        .info-value {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #1d1d1f;
+        }
+        
+        .honor-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .honor-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-radius: 14px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 248, 250, 0.9) 100%);
+            border-left: 5px solid;
+        }
+        
+        .honor-icon {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            color: white;
+        }
+        
+        .honor-content {
+            flex: 1;
+        }
+        
+        .honor-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .honor-desc {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .honor-date {
+            font-size: 0.85rem;
+            color: #888;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        .gallery-item {
+            height: 150px;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.08);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+            color: white;
+            padding: 15px 15px 10px;
+            transform: translateY(10px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .strength-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .strength-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 18px;
+            border-radius: 16px;
+            background-color: #f8f8fa;
+        }
+        
+        .strength-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.3rem;
+            color: white;
+            flex-shrink: 0;
+        }
+        
+        .strength-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: #1d1d1f;
+        }
+        
+        .strength-content p {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #86868b;
+            font-size: 0.95rem;
+            margin-top: 40px;
+            border-top: 1px solid #e5e5e7;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .card {
+                padding: 25px 20px;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* iOS风格颜色 */
+        .color-blue {
+            background-color: #007AFF;
+        }
+        
+        .color-purple {
+            background-color: #5856D6;
+        }
+        
+        .color-green {
+            background-color: #34C759;
+        }
+        
+        .color-orange {
+            background-color: #FF9500;
+        }
+        
+        .color-red {
+            background-color: #FF3B30;
+        }
+        
+        .color-teal {
+            background-color: #5AC8FA;
+        }
+        
+        .color-yellow {
+            background-color: #FFCC00;
+        }
+        
+        .border-blue {
+            border-left-color: #007AFF;
+        }
+        
+        .border-purple {
+            border-left-color: #5856D6;
+        }
+        
+        .border-green {
+            border-left-color: #34C759;
+        }
+        
+        .border-orange {
+            border-left-color: #FF9500;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="avatar-container">
+            <svg class="avatar" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#007AFF;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#5856D6;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <circle cx="50" cy="50" r="45" fill="url(#gradient)"/>
+                <text x="50" y="55" text-anchor="middle" fill="white" font-size="28" font-weight="bold">eating</text>
+            </svg>
+        </div>
+        <h1>高意婷</h1>
+        <div class="title">在生活里寻找热爱  在秩序中追寻自由</div>
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-envelope color-blue"></i>
+                <span>2023303051037@whu.edu.cn</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone color-green"></i>
+                <span>+86 155 7671 4448</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt color-red"></i>
+                <span>湖北省武汉市武昌区</span>
+            </div>
+        </div>
+    </header>
+    
+    <main class="container">
+        <!-- 基本信息板块 -->
+        <section class="card">
+            <div class="card-header">
+                <div class="card-icon color-blue">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h2>基本信息</h2>
+            </div>
+            <div class="basic-info">
+                <div class="info-item">
+                    <div class="info-icon color-blue">
+                        <i class="fas fa-birthday-cake"></i>
+                    </div>
+                    <div class="info-text">
+                        <div class="info-label">出生日期</div>
+                        <div class="info-value">2005年7月13日(农历六月初八)</div>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon color-green">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="info-text">
+                        <div class="info-label">教育背景</div>
+                        <div class="info-value">武汉大学 - 公共卫生学院 - 预防医学 -2023级本科生</div>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon color-purple">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="info-text">
+                        <div class="info-label">星座 and MBTI</div>
+                        <div class="info-value">巨蟹座 × ENFP-A-T</div>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon color-orange">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <div class="info-text">
+                        <div class="info-label">籍贯</div>
+                        <div class="info-value">湖南省 - 衡阳市 - 蒸湘区</div>
+                    </div>
+            </div>
+                    <div class="info-item">
+                         <div class="info-icon color-yellow">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <div class="info-text">
+                        <div class="info-label">学生工作</div>
+                        <div class="info-value">武汉大学大学生创业促进中心 ×武汉大学学生社团指导中心</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 荣誉墙板块 -->
+        <section class="card">
+            <div class="card-header">
+                <div class="card-icon color-green">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h2>荣誉墙</h2>
+            </div>
+            <div class="honor-list">
+                <div class="honor-item border-blue">
+                    <div class="honor-icon color-blue">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="honor-content">
+                        <div class="honor-title">2024-2025学年本科生国家奖学金</div>
+                        <div class="honor-desc">在专业学习、科研竞赛、学生工作中寻找更好的自己</div>
+                        <div class="honor-date">2025年10月</div>
+                    </div>
+                </div>
+                <div class="honor-item border-purple">
+                    <div class="honor-icon color-purple">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <div class="honor-content">
+                        <div class="honor-title">2023-2024学年海特生物奖学金</div>
+                        <div class="honor-desc">2023-2024学年武汉大学甲等优秀学生奖学金</div>
+                        <div class="honor-date">2024年12月</div>
+                    </div>
+                </div>
+                <div class="honor-item border-green">
+                    <div class="honor-icon color-green">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="honor-content">
+                        <div class="honor-title">2024-2025学年武汉大学三好学生</div>
+                        <div class="honor-desc">2023-2024学年武汉大学三好学生</div>
+                        <div class="honor-date">2024.10 2025.10</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+                 <!-- 生活中的我板块 - 使用本地图片 -->
+<section class="card">
+    <div class="card-header">
+        <div class="card-icon color-purple">
+            <i class="fas fa-heart"></i>
+        </div>
+        <h2>生活中的我</h2>
+    </div>
+    <p style="margin-bottom: 25px; color: #666;">我始终坚信，三分钟的热度就有三分钟的收获。</p>
+    <div class="gallery">
+        <div class="gallery-item">
+            <!-- 使用本地图片文件 -->
+            <img src="C:\Users\LENOVO\Desktop\photo.jpg"
+                 alt="摄影作品 - 小米徕卡" 
+                 class="gallery-img">
+            <div class="gallery-overlay">
+                <div>摄影作品 - 小米徕卡</div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="C:\Users\LENOVO\Desktop\food.jpg"
+                 alt="美食品鉴家 - 凭自己的本身攒脂肪！" 
+                 class="gallery-img">
+            <div class="gallery-overlay">
+                <div>美食品鉴家 - 凭自己的本身攒脂肪！</div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="C:\Users\LENOVO\Desktop\travel.jpg" 
+                 alt="旅行 - 偏爱大海、草原、飞鸟" 
+                 class="gallery-img">
+            <div class="gallery-overlay">
+                <div>旅行 - 偏爱大海、草原、飞鸟</div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="C:\Users\LENOVO\Desktop\dog.jpg"
+                 alt="萌宠 - 猫猫狗狗赛高" 
+                 class="gallery-img">
+            <div class="gallery-overlay">
+                <div>萌宠 - 猫猫狗狗赛高</div>
+            </div>
+        </div>
+    </div>
+    <div style="margin-top: 25px; padding: 15px; background-color: #f8f8fa; border-radius: 12px;">
+        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+            <div class="info-icon color-red" style="margin-right: 12px;">
+                <i class="fas fa-running"></i>
+            </div>
+            <div style="font-weight: 600;">体验型爱好者</div>
+        </div>
+        <div style="color: #666; font-size: 0.95rem;">爵士、拉丁、书法、辩论、滑板等都略有涉猎</div>
+    </div>
+</section>
+           
+    <script>
+        // 添加卡片悬停效果增强
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+                this.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.1)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 6px 20px rgba(0, 0, 0, 0.06)';
+            });
+        });
+        
+        // 添加信息项点击效果
+        document.querySelectorAll('.info-item').forEach(item => {
+            item.addEventListener('click', function() {
+                this.style.backgroundColor = '#e8e8ed';
+                setTimeout(() => {
+                    this.style.backgroundColor = '';
+                }, 200);
+            });
+        });
+        
+        // 动态设置当前年份
+        document.querySelector('footer p').innerHTML = `© ${new Date().getFullYear()} 高意婷的个人网页 | 采用iOS设计风格`;
+    </script>
+</body>
+</html>
